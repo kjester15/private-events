@@ -12,8 +12,10 @@
 
   <body>
     <div>
-      <%= "Current User:" %>
-      <%= current_user.id %>
+      <% if user_signed_in? %>
+        <%= "Current User:" %>
+        <%= current_user.id %>
+      <% end %>
     </div>
     <div class="nav-bar">
       <%= button_to "All Events", events_path, method: :get %>
