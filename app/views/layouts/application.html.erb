@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <div>
+      <%= "Current User:" %>
+      <%= current_user.id %>
+    </div>
     <div class="nav-bar">
       <%= button_to "All Events", events_path, method: :get %>
       <%= button_to "New Event", new_event_path, method: :get %>
