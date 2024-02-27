@@ -1,9 +1,11 @@
-<h1>User Created Events</h1>
+<h1>Your Events</h1>
 <% @events.each do |event| %>
   <ul>  
     <li>
       <h3><%= event.title %></h3>
       <%= event.description %><br>
       <%= event.date %><br>
+      <%= "Creator ID:" %>
+      <%= event.creator.id %>
     </li>
   </ul><% end %>
