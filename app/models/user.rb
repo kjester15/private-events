@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events, foreign_key: "creator_id", class_name: "Event"
+  belongs_to :events, foreign_key: "attendee_id", class_name: "Event"
 end
