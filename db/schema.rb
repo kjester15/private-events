@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_28_000010) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_28_020931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attended_events", force: :cascade do |t|
+    t.bigint "attendee_id"
+    t.bigint "attended_event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attended_event_id"], name: "index_attended_events_on_attended_event_id"
+    t.index ["attendee_id"], name: "index_attended_events_on_attendee_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -21,8 +30,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_28_000010) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
-    t.bigint "attendee_id"
-    t.index ["attendee_id"], name: "index_events_on_attendee_id"
     t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
@@ -38,6 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_28_000010) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "events", "users", column: "attendee_id"
+  add_foreign_key "attended_events", "events", column: "attended_event_id"
+  add_foreign_key "attended_events", "users", column: "attendee_id"
   add_foreign_key "events", "users", column: "creator_id"
 end
