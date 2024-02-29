@@ -7,8 +7,7 @@
       <%= event.date %><br>
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
-      <%= "Check here to attend: " %>
-      <%= check_box_tag(:name) %><br>
-      <%# <%= link_to "See Event Details", attended_event_path, method: :get %> %>
+      <%= button_to "Attend this event", attended_event_path(event.id), method: :get %>
+      <%= link_to "See Event Attendees", attended_event_path(event.id), method: :get %>
     </li>
   </ul><% end %>
