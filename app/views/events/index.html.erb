@@ -6,6 +6,8 @@
       <%= event.description %><br>
       <%= event.date %><br>
       <%= "Creator ID:" %>
-      <%= event.creator.id %>
+      <%= event.creator.id %><br>
+      <%= "Check here to attend: " %><br>
+      <%= link_to "See Event Details", attended_events_path, method: :get %>
     </li>
   </ul><% end %>
