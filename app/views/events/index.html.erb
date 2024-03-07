@@ -7,7 +7,7 @@
       <%= event.date %><br>
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
-      <%= button_to "Attend this event", attended_event_path(event.id), method: :get %>
-      <%= link_to "See Event Attendees", attended_event_path(event.id), method: :get %>
+      <%= button_to "Attend this event", attended_events_path, params: {id: event.id}, method: :post %>
+      <%= link_to "See Event Attendees", attended_events_path(event.id), method: :get %>
     </li>
   </ul><% end %>
