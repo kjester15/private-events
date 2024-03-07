@@ -17,7 +17,7 @@ class EventsUsersController < ApplicationController
     @attended_event = EventUser.new(attendee_id: current_user.id, attended_event_id: params[:id])
 
     if @attended_event.save
-      redirect_to events_users_path(params[:id])
+      redirect_to events_path
     else
       redirect_to events_path, status: :unprocessable_entity
     end
