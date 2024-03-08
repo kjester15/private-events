@@ -5,6 +5,11 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def show
+    @events = Event.where("id = ?", params[:id])
+    # @attendees = Event.where("attended_event_id = ?", params[:id]).attendees
+  end
+
   def new
     @event = Event.new
   end

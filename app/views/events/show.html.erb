@@ -1,13 +1,22 @@
-<h1>Events</h1>
 <% @events.each do |event| %>
   <ul>  
     <li>
-      <h3><%= event.title %></h3>
+      <h1><%= event.title %></h1>
       <%= event.description %><br>
       <%= event.date %><br>
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
       <%= button_to "Attend this event", events_users_path, params: {id: event.id}, method: :post %>
-      <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
     </li>
   </ul><% end %>
+
+<%= "Attendees: " %><br>
+
+<%# <% @attendees.each do |attendee| %> %>
+  <ul>  
+    <li>
+      <%# <%= attendee.first_name %> %>
+      <%# <%= attendee.last_name %> %>
+    </li>
+  </ul>
+<%# <% end %> %>

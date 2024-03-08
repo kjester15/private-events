@@ -3,12 +3,6 @@ class EventsUsersController < ApplicationController
     @attended_events = EventUser.all
   end
 
-  def show
-    @attended_events = EventUser.where("attended_event_id = ?", params[:id])
-    @events = Event.where("id = ?", params[:id])
-    @attendees = User.where("id = ?", params[:id])
-  end
-
   def new
     @attended_event = EventUser.new
   end
