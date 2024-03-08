@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @events = Event.where("id = ?", params[:id])
-    # @attendees = Event.where("attended_event_id = ?", params[:id]).attendees
+    @attendees = Event.where("id = ?", params[:id]).attendees
   end
 
   def new
