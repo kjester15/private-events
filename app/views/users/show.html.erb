@@ -5,7 +5,15 @@
       <h3><%= event.title %></h3>
       <%= event.description %><br>
       <%= event.date %><br>
-      <%= "Creator ID:" %>
-      <%= event.creator.id %>
+    </li>
+  </ul><% end %>
+
+<h1>Events You're attending</h1>
+<% @attendances.each do |attendance| %>
+  <ul>  
+    <li>
+      <h3><%= attendance.title %></h3>
+      <%= attendance.description %><br>
+      <%= attendance.date %><br>
     </li>
   </ul><% end %>
