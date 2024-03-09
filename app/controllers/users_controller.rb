@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @events = Event.where("creator_id = ?", current_user)
+    @events = Event.find(current_user.id)
     @attendances = current_user.attended_events
   end
 end
