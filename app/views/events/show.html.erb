@@ -1,14 +1,9 @@
-<% @events.each do |event| %>
-  <ul>  
-    <li>
-      <h1><%= event.title %></h1>
-      <%= event.description %><br>
-      <%= event.date %><br>
-      <%= "Creator ID:" %>
-      <%= event.creator.id %><br>
-      <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
-    </li>
-  </ul><% end %>
+<h1><%= @event.title %></h1>
+<%= @event.description %><br>
+<%= @event.date %><br>
+<%= "Creator ID:" %>
+<%= @event.creator.id %><br>
+<%= button_to "Attend this event", event_users_path, params: {id: @event.id}, method: :post %>
 
 <%= "Attendees: " %><br>
 
