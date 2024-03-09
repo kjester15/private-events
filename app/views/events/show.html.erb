@@ -3,7 +3,7 @@
 <%= @event.date %><br>
 <%= "Creator ID:" %>
 <%= @event.creator.id %><br>
-<%= button_to "Attend this event", event_users_path, params: {id: @event.id}, method: :post %>
+<%= button_to "Attend this event", event_users_path, params: {id: @event.id}, method: :post %><br><br>
 
 <%= "Attendees: " %><br>
 
