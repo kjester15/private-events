@@ -3,11 +3,14 @@ class Event < ApplicationRecord
   has_many :event_users, foreign_key: "attended_event_id"
   has_many :attendees, through: :event_users, source: :attendee
 
-  def past
-    @past = Event.where("date < :today", { today: Date.today }).order(date: :asc)
-  end
+  scope :past, -> { where("date < :today", { today: Date.today }) }
+  scope :upcoming, -> { where("date >= :today", { today: Date.today }) }
 
-  def upcoming
-    @upcoming = Event.where("date >= :today", { today: Date.today }).order(date: :asc)
-  end
+  # def past
+  #   @past = Event.where("date < :today", { today: Date.today }).order(date: :asc)
+  # end
+
+  # def upcoming
+  #   @upcoming = Event.where("date >= :today", { today: Date.today }).order(date: :asc)
+  # end
 end
