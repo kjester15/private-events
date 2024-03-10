@@ -8,7 +8,8 @@
       <%= event.date %><br>
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
-      <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
+      <% message = EventUser.where(attendee_id: current_user.id).nil? ? "Attend this event" : "Revoke RSVP?" %>
+      <%= button_to "#{message}", event_users_path, params: {id: event.id}, method: :post %>
       <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
     </li>
   </ul>
@@ -22,7 +23,6 @@
       <%= event.date %><br>
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
-      <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
       <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
     </li>
   </ul>
