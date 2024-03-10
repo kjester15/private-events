@@ -23,7 +23,7 @@
       <%= event.date %><br>
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
-      <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
+      <%= link_to "See Event Attendees", event_path(id: event.id, past: "past"), method: :get %>
     </li>
   </ul>
 <% end %>
