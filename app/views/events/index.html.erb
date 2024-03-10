@@ -13,7 +13,7 @@
       <% if attend == true %>
         <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
       <% else %>
-        <%= button_to "Revoke RSVP?", event_users_path, params: {id: event.id}, method: :delete %>
+        <%= button_to "Revoke RSVP?", event_user_path(event.id), method: :delete %>
       <% end %>
       <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
     </li>

@@ -16,4 +16,11 @@ class EventUsersController < ApplicationController
       redirect_to events_path, status: :unprocessable_entity
     end
   end
+
+  def destroy
+    @attended_event = EventUser.where("attended_event_id = ?", params[:id])
+    @attending_user = @attended_event.where("attendee_id = ?", current_user.id).first
+    @attending_user.destroy
+    redirect_to events_path
+  end
 end
