@@ -1,4 +1,5 @@
 <h1>Your Events</h1>
+
 <% @events.each do |event| %>
   <ul>  
     <li>
@@ -6,14 +7,27 @@
       <%= event.description %><br>
       <%= event.date %><br>
     </li>
-  </ul><% end %>
+  </ul>
+<% end %>
 
 <h1>Events You're attending</h1>
-<% @attendances.each do |attendance| %>
+<h2>Upcoming Events</h2>
+<% @attendances.where("date >= :today", { today: Date.today }).order(date: :asc).each do |attendance| %>
+  <ul>
+    <li>
+      <h3><%= attendance.title %></h3>
+      <%= attendance.description %><br>
+      <%= attendance.date %><br>
+    </li>
+  </ul>
+<% end %>
+<h2>Past Events</h2>
+<% @attendances.where("date < :today", { today: Date.today }).order(date: :asc).each do |attendance| %>
   <ul>  
     <li>
       <h3><%= attendance.title %></h3>
       <%= attendance.description %><br>
       <%= attendance.date %><br>
     </li>
-  </ul><% end %>
+  </ul>
+<% end %>

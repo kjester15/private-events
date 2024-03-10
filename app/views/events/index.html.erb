@@ -1,5 +1,6 @@
 <h1>Events</h1>
-<% @events.each do |event| %>
+<h2>Upcoming Events</h2>
+<% Event.new.upcoming.each do |event| %>
   <ul>  
     <li>
       <h3><%= event.title %></h3>
@@ -10,4 +11,19 @@
       <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
       <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
     </li>
-  </ul><% end %>
+  </ul>
+<% end %>
+<h2>Past Events</h2>
+<% Event.new.past.each do |event| %>
+  <ul>  
+    <li>
+      <h3><%= event.title %></h3>
+      <%= event.description %><br>
+      <%= event.date %><br>
+      <%= "Creator ID:" %>
+      <%= event.creator.id %><br>
+      <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
+      <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
+    </li>
+  </ul>
+<% end %>
