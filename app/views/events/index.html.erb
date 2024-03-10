@@ -9,8 +9,12 @@
       <%= "Creator ID:" %>
       <%= event.creator.id %><br>
       <% user = user_signed_in? ? current_user.id : nil %>
-      <% message = EventUser.where(attended_event_id: event.id, attendee_id: user).blank? ? "Attend this event" : "Revoke RSVP?" %>
-      <%= button_to "#{message}", event_users_path, params: {id: event.id}, method: :post %>
+      <% attend = EventUser.where(attended_event_id: event.id, attendee_id: user).blank? ? true : false %>
+      <% if attend == true %>
+        <%= button_to "Attend this event", event_users_path, params: {id: event.id}, method: :post %>
+      <% else %>
+        <%= button_to "Revoke RSVP?", event_users_path, params: {id: event.id}, method: :delete %>
+      <% end %>
       <%= link_to "See Event Attendees", event_path(event.id), method: :get %>
     </li>
   </ul>
